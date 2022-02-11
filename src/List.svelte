@@ -8,7 +8,9 @@
 
 <div class="flex-1 h-full w-full max-w-2xl flex justify-center">
   {#if todos === undefined}
-    <p class="text-center mb-6 self-center">Create some todos to get started</p>
+    <p class="text-center text-4xl mb-10 self-center">
+      Create some todos to get started
+    </p>
   {:else}
     <ul class="w-full">
       {#each todos as todo}

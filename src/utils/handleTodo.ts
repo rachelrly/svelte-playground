@@ -27,7 +27,6 @@ export function handleTodoListDone(
   todo: TodoType
 ): TodoListType {
   const toggled = toggleTodoDone(todo)
-  console.log('THIS IS MY TOGGLED TODO', { toggled, todo })
   const newList = deleteTodo(list, todo)
   if (toggled.done) {
     return newList.length ? [...newList, toggled] : [toggled]

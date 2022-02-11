@@ -19,8 +19,7 @@
   }
 
   function handleToggleDone(todo: TodoType): void {
-    console.log('STARTED RUNNING HANDLE TOGGLE DONE', todo)
-    handleTodoListDone(todos, todo)
+    todos = handleTodoListDone(todos, todo)
   }
 </script>
 
