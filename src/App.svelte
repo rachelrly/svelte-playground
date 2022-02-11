@@ -1,13 +1,16 @@
 <script lang="ts">
+  import type { TodoListType } from './types/Todo'
+  import Form from './Form.svelte'
+  import List from './List.svelte'
+
   export let name: string
+  export let todos: TodoListType
 </script>
 
-<main>
-  <h1>Hello {name}!</h1>
-  <p>
-    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-    how to build Svelte apps.
-  </p>
+<main class="flex flex-col items-center justify-evenly p-3 ">
+  <h1 class="text-red-500">Hello {name}!</h1>
+  <Form />
+  <List {todos} />
 </main>
 
 <style global lang="postcss">
