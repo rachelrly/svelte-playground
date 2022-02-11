@@ -1,11 +1,25 @@
 <script lang="ts">
   import type { TodoListType, TodoType } from './types/Todo'
-  import { addTodo, handleTodoListDone } from './utils'
+  import {
+    addTodo,
+    handleTodoListDone,
+    getTodosLocalStorate,
+    setTodosLocalStorage
+  } from './utils'
   import Form from './Form.svelte'
   import List from './List.svelte'
+  import { afterUpdate, onMount } from 'svelte'
 
   export let todos: TodoListType = undefined
   export let error: string = undefined
+
+  onMount(() => {
+    todos = getTodosLocalStorate()
+  })
+
+  afterUpdate(() => {
+    setTodosLocalStorage(todos)
+  })
 
   function handleAddTodo(event: any) {
     const todo = event.target.todo?.value
