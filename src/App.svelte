@@ -1,30 +1,36 @@
 <script lang="ts">
-	export let name: string;
+  import type { TodoListType, TodoType } from './types/Todo'
+  import { addTodo, handleTodoListDone } from './utils'
+  import Form from './Form.svelte'
+  import List from './List.svelte'
+
+  export let todos: TodoListType = undefined
+  export let error: string = undefined
+
+  function handleAddTodo(event: any) {
+    const todo = event.target.todo?.value
+    if (todo) {
+      todos = addTodo(todos, todo)
+      event.target.todo.value = ''
+      if (error) error = undefined
+    } else {
+      error = 'Could not add todo'
+    }
+  }
+
+  function handleToggleDone(todo: TodoType): void {
+    todos = handleTodoListDone(todos, todo)
+  }
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+<main class="flex flex-col items-center justify-evenly h-screen p-3">
+  <h1 class="text-black text-xl">Svelte/Tailwind/TypeScript Todo List</h1>
+  <Form onClick={handleAddTodo} {error} />
+  <List {todos} {handleToggleDone} />
 </main>
 
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+<style global lang="postcss">
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 </style>
