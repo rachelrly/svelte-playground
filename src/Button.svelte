@@ -5,7 +5,7 @@
 </script>
 
 <button
-  class="bg-purple-600 text-white p-2"
+  class="bg-purple-600 text-white px-2 py-0"
   {type}
   on:click={type === 'submit' ? null : onClick}>{text}</button
 >

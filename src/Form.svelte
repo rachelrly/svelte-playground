@@ -5,16 +5,23 @@
 </script>
 
 <form
-  class="flex flex-col px-2 items-center justify-center"
+  class="flex flex-col items-center justify-center w-full max-w-2xl"
   on:submit|preventDefault={onClick}
 >
-  <div class="h-3">
+  <div class="h-6 flex items-center">
     {#if error}
-      <span class="text-red-600">{error}</span>
+      <span class="text-red-800 text-xs text-center">{error}</span>
     {/if}
   </div>
-  <label>
-    <input name="todo" type="text" placeholder="What are you doing today?" />
-  </label>
-  <Button text="Add +" type="submit" />
+  <fieldset class="flex flex-row w-full mb-3">
+    <label class="mr-2 flex-1 w-full">
+      <input
+        class="p-1 w-full"
+        name="todo"
+        type="text"
+        placeholder="What are you doing today?"
+      />
+    </label>
+    <Button text="Add +" type="submit" />
+  </fieldset>
 </form>

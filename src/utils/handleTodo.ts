@@ -4,7 +4,8 @@ export function makeTodo(content: string): TodoType {
   return {
     content,
     createdAt: new Date().toDateString(),
-    done: false
+    done: false,
+    id: Date.now().toString()
   }
 }
 
@@ -18,14 +19,15 @@ export function addTodo(list: TodoListType, content: string): TodoListType {
 }
 
 export function deleteTodo(list: TodoListType, todo: TodoType): TodoListType {
-  return list.filter((item) => todo.content !== item.content)
+  return list.filter((item) => todo.id !== item.id)
 }
 
-export function handleToggleDone(
+export function handleTodoListDone(
   list: TodoListType,
   todo: TodoType
 ): TodoListType {
   const toggled = toggleTodoDone(todo)
+  console.log('THIS IS MY TOGGLED TODO', { toggled, todo })
   const newList = deleteTodo(list, todo)
   if (toggled.done) {
     return newList.length ? [...newList, toggled] : [toggled]

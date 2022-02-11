@@ -1,10 +1,19 @@
 <script lang="ts">
   import type { TodoType } from './types'
+
   export let todo: TodoType
-  const line = todo.done ? 'line-through' : 'no-underline'
+  export let handleToggleDone: (todo: TodoType) => void
+  let line = 'no-underline'
+  $: {
+    line = todo.done ? 'line-through' : 'no-underline'
+  }
 </script>
 
-<div class="flex flex-row justify-between align-center p-2">
+<button
+  class="flex flex-row justify-between align-center w-full p-2 mb-2"
+  on:click={() => handleToggleDone(todo)}
+>
   <span class={line}>{todo.content}</span>
+  <span>AM I DONE?? {todo.done}</span>
   <span>{todo.createdAt}</span>
-</div>
+</button>
