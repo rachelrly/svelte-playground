@@ -4,13 +4,11 @@
   import Form from './Form.svelte'
   import List from './List.svelte'
 
-  export let name: string
   export let todos: TodoListType = undefined
   export let error: string = undefined
 
   function handleAddTodo(event: any) {
     const todo = event.target.todo?.value
-    console.log('THIS IS MY EVENT', event.target, event.target?.todo?.value)
     if (todo) {
       todos = addTodo(todos, todo)
       event.target.todo.value = ''
@@ -19,10 +17,12 @@
       error = 'Could not add todo'
     }
   }
+
+  function handleToggleDone() {}
 </script>
 
 <main class="flex flex-col items-center justify-evenly p-3 ">
-  <h1 class="text-red-500">Hello {name}!</h1>
+  <h1 class="text-red-500">Svelte/Tailwind/TypeScript Todo List</h1>
   <Form onClick={handleAddTodo} {error} />
   <List {todos} />
 </main>

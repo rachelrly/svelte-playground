@@ -16,5 +16,5 @@
   <label>
     <input name="todo" type="text" placeholder="What are you doing today?" />
   </label>
-  <Button text="Add +" />
+  <Button text="Add +" type="submit" />
 </form>
