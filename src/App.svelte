@@ -23,7 +23,10 @@
 
   function handleAddTodo(event: any) {
     const todo = event.target.todo?.value
-    if (todo) {
+    if (todo.length > 30) {
+      error = 'Todo must be shorter than 30 characters'
+      event.target.todo.value = ''
+    } else if (todo) {
       todos = addTodo(todos, todo)
       event.target.todo.value = ''
       if (error) error = undefined

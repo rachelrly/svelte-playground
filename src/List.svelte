@@ -6,13 +6,9 @@
   export let handleToggleDone: (todo: TodoType) => void
 </script>
 
-<div class="flex-1 h-full w-full max-w-2xl flex justify-center">
-  {#if todos === undefined}
-    <p class="text-center text-4xl mb-10 self-center">
-      Create some todos to get started
-    </p>
-  {:else}
-    <ul class="w-full">
+<div class="flex-1 h-full w-full max-w-2xl">
+  {#if todos && todos.length}
+    <ul class="w-full flex-col flex justify-center">
       {#each todos as todo}
         <Todo {todo} {handleToggleDone} />
       {/each}
