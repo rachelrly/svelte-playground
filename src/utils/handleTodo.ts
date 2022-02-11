@@ -13,6 +13,7 @@ export function toggleTodoDone(todo: TodoType): TodoType {
 }
 
 export function addTodo(list: TodoListType, content: string): TodoListType {
+  if (list === undefined) return [makeTodo(content)]
   return [makeTodo(content), ...list]
 }
 
