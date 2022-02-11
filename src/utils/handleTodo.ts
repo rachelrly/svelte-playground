@@ -3,10 +3,20 @@ import type { TodoListType, TodoType } from '../types'
 export function makeTodo(content: string): TodoType {
   return {
     content,
-    createdAt: new Date().toDateString(),
+    createdAt: makeDateString(new Date()),
     done: false,
     id: Date.now().toString()
   }
+}
+
+function makeDateString(date: Date): string {
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'short',
+    timeZone: 'CST',
+    hour: 'numeric',
+    minute: 'numeric'
+  }
+  return new Intl.DateTimeFormat('en-US', options).format(date)
 }
 
 export function toggleTodoDone(todo: TodoType): TodoType {

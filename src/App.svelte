@@ -35,11 +35,20 @@
   function handleToggleDone(todo: TodoType): void {
     todos = handleTodoListDone(todos, todo)
   }
+
+  function handleClearTodos() {
+    todos = undefined
+  }
 </script>
 
 <main class="flex flex-col items-center justify-evenly h-screen p-3">
   <h1 class="text-black text-xl">Svelte/Tailwind/TypeScript Todo List</h1>
-  <Form onClick={handleAddTodo} {error} />
+  <Form
+    onClick={handleClearTodos}
+    onSubmit={handleAddTodo}
+    {error}
+    hasTodos={Boolean(todos?.length)}
+  />
   <List {todos} {handleToggleDone} />
 </main>
 
