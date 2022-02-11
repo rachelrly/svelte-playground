@@ -21,6 +21,7 @@
         class="p-1 w-full"
         name="todo"
         type="text"
+        max="30"
         placeholder="What are you doing today?"
       />
     </label>
